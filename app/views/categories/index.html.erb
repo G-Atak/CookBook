@@ -1,12 +1,12 @@
-<h1>All Categories</h1>
-
-<%= link_to 'New Category', new_category_path %>
+<h1>Categories</h1>
 
 <ul>
   <% @categories.each do |category| %>
     <li>
       <%= link_to category.name, category_path(category) %>
-      <%= link_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
     </li>
   <% end %>
 </ul>
+
+<p><%= link_to 'Add New Category', new_category_path %></p>
+<p><%= link_to 'Back to Home', root_path %></p>
