@@ -11,6 +11,30 @@
 
 # Destroy existing records to avoid duplicates
 
-Category.create(name: "Italian")
-Category.create(name: "Breakfast")
-Category.create(name: "Healthy")
+Recipe.create!(
+  name: "Spaghetti Carbonara",
+  description: "A traditional Roman pasta dish made with eggs, cheese, pancetta, and pepper.",
+  image_url: "https://www.pexels.com/photo/pasta-with-vegetables-and-meat-on-a-white-plate-4518833/",
+  rating: 8.5
+)
+
+Recipe.create!(
+  name: "Caesar Salad",
+  description: "A classic salad made with romaine lettuce, croutons, and Caesar dressing.",
+  image_url: "https://www.pexels.com/photo/close-up-photo-of-vegetable-salad-with-boiled-egg-2092903/",
+  rating: 7.8
+)
+
+Recipe.create!(
+  name: "Pancakes",
+  description: "Fluffy American-style pancakes, perfect for breakfast.",
+  image_url: "https://www.pexels.com/photo/pancake-with-raspberries-407041/",
+  rating: 9.2
+)
+
+Recipe.create!(
+  name: "Grilled Cheese Sandwich",
+  description: "A quick and easy grilled cheese sandwich, crispy on the outside and melty inside.",
+  image_url: "https://www.pexels.com/photo/a-grilled-cheese-sandwich-on-a-wooden-board-13689918/",
+  rating: 8.0
+)

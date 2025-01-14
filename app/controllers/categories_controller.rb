@@ -4,10 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(id: params[:id])
-    if @category.nil?
-      redirect_to categories_path, alert: 'Category not found.'
-    end
+    @category = Category.find(params[:id])
   end
 
   def new
@@ -17,20 +14,16 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to category_path(@category), notice: 'Category was successfully created.'
+      redirect_to categories_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @category = Category.find_by(id: params[:id])
-    if @category
-      @category.destroy
-      redirect_to categories_path, notice: 'Category was successfully deleted.'
-    else
-      redirect_to categories_path, alert: 'Category not found.'
-    end
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to categories_path
   end
 
   private

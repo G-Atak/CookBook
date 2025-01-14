@@ -1,15 +1,9 @@
 <h1>Add a Recipe to <%= @category.name %></h1>
 
-<%= simple_form_for([@category, @bookmark]) do |f| %>
-  <div>
-    <%= f.input :recipe_id, label: 'Select a Recipe', collection: @recipes, prompt: 'Choose a Recipe' %>
-  </div>
-  <div>
-    <%= f.input :comment, label: 'Comment' %>
-  </div>
-  <div>
-    <%= f.submit 'Add Recipe' %>
-  </div>
+<%= simple_form_for [@category, @bookmark] do |f| %>
+  <%= f.input :recipe_id, collection: @recipes, label: "Select a Recipe" %>
+  <%= f.input :comment, label: "Add a Comment" %>
+  <%= f.button :submit, "Add Recipe" %>
 <% end %>
 
-<p><%= link_to 'Back to Category', category_path(@category) %></p>
+<%= link_to "Back to #{@category.name}", category_path(@category) %>

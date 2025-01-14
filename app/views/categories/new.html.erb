@@ -1,13 +1,8 @@
 <h1>New Category</h1>
 
 <%= simple_form_for @category do |f| %>
-  <div>
-    <%= f.input :name, label: 'Category Name' %>
-  </div>
-
-  <div>
-    <%= f.submit 'Create Category' %>
-  </div>
+  <%= f.input :name %>
+  <%= f.button :submit, "Create Category" %>
 <% end %>
 
-<p><%= link_to 'Back to Categories', categories_path %></p>
+<%= link_to "Back to Categories", categories_path %>
