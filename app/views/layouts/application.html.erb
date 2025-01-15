@@ -11,13 +11,8 @@
   </head>
 
   <body>
-      <nav>
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Categories", categories_path %></li>
-      </ul>
-    </nav>
 
+        <%=render 'shared/navbar'%>
       <%= yield %>
 
 

@@ -1,17 +1,35 @@
-<h1><%= @category.name %></h1>
+<div class="banner" style="background-image: url(<%= image_path('category.jpg') %>)">
+  <div>
+    <h1><%= @category.name %></h1>
+  </div>
+</div>
 
-<h2>Recipes in this Category</h2>
+<div class="container">
+  <div class="info-top">
+    <h3>Recipe</h3>
+    <%= link_to 'Add a Recipe', new_category_bookmark_path(@category), class: 'btn btn-warning' %>
+  </div>
 
-<ul>
-  <% @category.recipes.each do |recipe| %>
-    <li>
-      <%= recipe.name %> |
-      <%= link_to "Delete", category_bookmark_path(@category, @category.bookmarks.find_by(recipe: recipe)), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
+  <div class="cards">
+    <% @category.recipes.each do |recipe| %>
+      <div class="card-recipe">
 
-<%= link_to "Add a Recipe to this Category", new_category_bookmark_path(@category), class: "btn btn-primary" %>
+        <%= image_tag recipe.image_url, alt: "Recipe image", class: "recipe-image" %>
 
-<br>
-<%= link_to "Back to Categories", categories_path %>
+        <div class="card-recipe-description">
+          <h2><%= recipe.name %></h2>
+          <p><%= recipe.description.truncate(200) %></p>
+        </div>
+
+        <div class="card-recipe-info">
+          <div>
+          <i class="fa-solid fa-quote-left"></i> <%= @category.bookmarks.find_by(recipe: recipe)&.comment %>
+          </div>
+          <div>
+            <%= recipe.rating %> <%= '⭐️' * recipe.rating %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
